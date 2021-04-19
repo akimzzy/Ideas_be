@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { APP_GUARD, APP_PIPE } from '@nestjs/core';
+import { /*APP_GUARD,*/ APP_PIPE } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthGuard } from 'src/shared/auth.guard';
+import { IdeaEntity } from 'src/idea/idea.entity';
+// import { AuthGuard } from 'src/shared/auth.guard';
 import { ValidationPipe } from 'src/shared/validation.pipe';
 import { UserController } from './user.controller';
 import { UserEntity } from './user.entity';
 import { UserService } from './user/user.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity])],
+  imports: [TypeOrmModule.forFeature([UserEntity, IdeaEntity])],
   controllers: [UserController],
   providers: [
     UserService,
